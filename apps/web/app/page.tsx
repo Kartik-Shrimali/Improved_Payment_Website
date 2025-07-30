@@ -1,5 +1,6 @@
 import Image from "next/image";
 import {TestButton} from "@repo/ui/testButton"
+import {useBalance} from "@repo/store/useBalance"
 
 export default function Home() {
   return (
@@ -11,4 +12,12 @@ export default function Home() {
 
     </div>
   );
+}
+
+export function BalanceDisplay(){
+  const balance = useBalance()
+
+  return <div>
+    hi there {balance}
+  </div>
 }
