@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import {TestButton} from "@repo/ui/testButton"
 import {useBalance} from "@repo/store/useBalance"
@@ -9,7 +10,6 @@ export default function Home() {
         Hello from the div 1
       </div>
       <TestButton />
-
     </div>
   );
 }
