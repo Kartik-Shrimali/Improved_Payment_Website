@@ -11,7 +11,7 @@ export async function GET(request : Request){
         return NextResponse.json({
             msg : "You are probably not logged in"
         } , {
-            status : 403
+            status : 401
         })
     }
     if(session.user){

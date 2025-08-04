@@ -27,20 +27,23 @@ export const authOptions = {
             async authorize(credentials: AuthCredentials | undefined) {
 
                 if(!credentials){
+                    console.log("Credentials not provided")
                     return null;
                 }
 
                 const hashedPassword = await bcrypt.hash(credentials.password, 10);
-
+                console.log("hashedPassword")
                 const existingUser = await prisma.user.findFirst({
                     where: {
                         email: credentials.email,
-                        number: credentials.name
+                        number: credentials.number
                     }
                 })
+                console.log(existingUser);
 
                 if (existingUser) {
                     const passwordValidation = await bcrypt.compare(credentials.password, existingUser.password);
+                    console.log(passwordValidation)
                     if (passwordValidation) {
                         let user = {}
                         return user = {
@@ -62,6 +65,7 @@ export const authOptions = {
                             password: hashedPassword
                         }
                     })
+                    console.log(newUser);
                     let user = {}
                     return user = {
                         id: newUser.id.toString(),
